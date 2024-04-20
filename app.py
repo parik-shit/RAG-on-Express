@@ -61,9 +61,9 @@ def main(llm_model_name: str, embedding_model_name: str, documents_path: str) ->
                 break
 
             chat(user_input)
-            response = (llm.response,)
-            output = f"{user_input}: {response[0]}"  # Create output message with input and response
-            print(output)  # Write the response to stdout
+            # response = (llm.response,)
+            # output = f"{user_input}: {response[0]}"  # Create output message with input and response
+            # print(output)  # Write the response to stdout
         except KeyboardInterrupt:
             break
 

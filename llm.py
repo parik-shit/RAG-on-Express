@@ -1,7 +1,8 @@
 from operator import itemgetter
 import json
 import os
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+import sys
+# from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.callbacks.streaming_stdout_final_only import FinalStreamingStdOutCallbackHandler
 from langchain.memory import ConversationBufferMemory
 from langchain_core.prompts import ChatPromptTemplate
@@ -90,9 +91,9 @@ def getChatChain(llm, db):
 
     final_chain = loaded_memory | standalone_question | retrieved_documents | answer
 
-    def send_to_json(data):
-        with open('output.json', 'w') as json_file:
-            json.dump(data, json_file)
+    # def send_to_json(data):
+    #     with open('output.json', 'w') as json_file:
+    #         json.dump(data, json_file)
     def chat(question: str):
         inputs = {"question": question}
         result = final_chain.invoke(inputs)
@@ -100,9 +101,10 @@ def getChatChain(llm, db):
         sendToJson = result["answer"]
         
         print(result["answer"])
+        sys.stdout.flush()
 
-        send_to_json(sendToJson)
-        return result["answer"]
+        # send_to_json(sendToJson)
+        # return result["answer"]
 
     return chat
         
