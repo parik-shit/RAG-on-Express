@@ -37,11 +37,13 @@ This will load the PDFs and Markdown files, generate embeddings, query the colle
 3. Now, you have 2 routes to which you can send post request with a payload. It would be convenient to use Postman for this. 
 
 ## Usage
-1. There are 2 routes - `start-process` and `send-input`
+1. There is a single route - `send-input` on localhost:3000
 
-2. On localhost:3000/start-process, send a post request with the payload `{input: "<initial input>"}`. This route takes the initial input and starts the chatbot (i.e `app.py`)
+2. On localhost:3000/start-input, send a post request with the payload `{input: "<initial input>"}`. This route takes the input.
 
-3. The subsequent input will have to be sent to the localhost:3000/send-input route with the payload `{input: "<input>"}`
+3. Output will be sent back as a response to the same route
+
+4. The pdfs, that have to be used for embeddings should be in Research folder.
 
 
 ## Technologies Used
@@ -51,4 +53,3 @@ This will load the PDFs and Markdown files, generate embeddings, query the colle
 - [Chroma](https://docs.trychroma.com/): A vector database for storing and retrieving embeddings.
 - [PyPDF](https://pypi.org/project/PyPDF2/): A Python library for reading and manipulating PDF files.
 
-![alt text](images/image.png)
