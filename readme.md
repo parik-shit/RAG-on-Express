@@ -12,7 +12,7 @@ This AI chatbot has memory and uses a vectorDB to store and retrieve old message
 
 - [Ollama](https://ollama.ai/) verson 0.1.26 or higher.
 
-## Setup
+## Setup AI Chatbot script
 
 1. Clone this repository to your local machine.
 
@@ -31,12 +31,16 @@ The time taken to start the local LLM will depend on your hardware configuration
 
 This will load the PDFs and Markdown files, generate embeddings, query the collection, and answer the question defined in `app.py`.
 
-## Running the Project On Local Host
-1. Express server files are within the root directory, so just ``npm i`` first, to install all the node modules and packages.
+### Running the Project Locally
 
-2. To start the server run ``node index.js``
+1. **Setup**: Navigate to the root directory and execute `npm i` to install all required node modules and packages for the Express server.
 
-3. Now, you have a single route to which you can send post request with a payload. It would be convenient to use Postman for this. 
+2. **Start the Server**: Launch the server by running `node index.js`.
+
+3. **Access the Route**: Once the server is running, send a POST request to the designated route. Using Postman is recommended for this task.
+
+By following these steps, you can run and interact with the project in your local environment.
+
 
 ## Usage
 
