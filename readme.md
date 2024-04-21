@@ -1,6 +1,8 @@
 # RAG on Express
 
 
+This AI chatbot has memory and uses a vectorDB to store and retrieve old messages. It runs locally, leveraging a locally downloaded LLM for processing. Additionally, it supports an API route using Express and Node.js, enabling scalability for various use cases of the chatbot.
+
 
 
 
@@ -20,9 +22,9 @@
 
 **Note:** The first time you run the project, it will download the necessary models from Ollama for the LLM and embeddings. This is a one-time setup process and may take some time depending on your internet connection.
 
-The time taken to start the local LLM will depend on your hardware configuration. It make take 1 - 3 min to start
+The time taken to start the local LLM will depend on your hardware configuration. It may take 1 - 3 min to start.
 
-1. Ensure your virtual environment is activated or you can just install all the packages without making an environment.
+1. (optional, if you want to run only the python script and not the server) Ensure your virtual environment is activated or you can just install all the packages without making an environment.
 
 2. Run the main script with `python app.py -m <model_name> -p <path_to_documents>` to specify a model and the path to documents. If no model is specified, it defaults to [orca-mini](https://ollama.com/library/orca-mini). If no path is specified, it defaults to `Research` located in the repository for example purposes.
 3. Optionally, you can specify the embedding model to use with `-e <embedding_model_name>`. If not specified, it defaults to [nomic-embed-text](https://ollama.com/library/nomic-embed-text).
@@ -34,16 +36,18 @@ This will load the PDFs and Markdown files, generate embeddings, query the colle
 
 2. To start the server run ``node index.js``
 
-3. Now, you have 2 routes to which you can send post request with a payload. It would be convenient to use Postman for this. 
+3. Now, you have a single route to which you can send post request with a payload. It would be convenient to use Postman for this. 
 
 ## Usage
-1. There is a single route - `send-input` on localhost:3000
 
-2. On localhost:3000/start-input, send a post request with the payload `{input: "<initial input>"}`. This route takes the input.
+1. **Route:** Access the single route `send-input` on port `3000`.
 
-3. Output will be sent back as a response to the same route
+2. **Initial Input:** Send a POST request to `localhost:3000/start-input` with the payload `{input: "<initial input>"}` to provide the initial input.
 
-4. The pdfs, that have to be used for embeddings should be in Research folder.
+3. **Response:** The output will be sent back as a response to the same route (`localhost:3000/start-input`).
+
+4. **File Support:** Place PDFs intended for embeddings in the 'Research' folder. This system also supports markdown files, so you can freely add files to the 'Research' folder.
+
 
 
 ## Technologies Used
@@ -52,4 +56,7 @@ This will load the PDFs and Markdown files, generate embeddings, query the colle
 - [Ollama](https://ollama.ai/): A platform for running Large Language models locally.
 - [Chroma](https://docs.trychroma.com/): A vector database for storing and retrieving embeddings.
 - [PyPDF](https://pypi.org/project/PyPDF2/): A Python library for reading and manipulating PDF files.
+- [Express](https://expressjs.com/): Express.js is a minimalist Node.js web application framework.
+- [NodeJS](https://nodejs.org/en): Node.js is a server-side JavaScript runtime environment.
+
 
