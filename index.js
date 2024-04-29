@@ -8,11 +8,11 @@ const port = 3000;
 app.use(express.json());
 
 let pythonProcess;
-const pythonScriptPath = path.join(__dirname, '../app.py'); // Relative path to app.py
+const pythonScriptPath = path.join(__dirname, './api/app.py'); // Relative path to app.py
 
 // Function to start the detached Python process
 function startPythonProcess() {
-  pythonProcess = spawn('python', ['app.py'], {
+  pythonProcess = spawn('python', [pythonScriptPath], {
     detached: true,
     stdio: ['pipe', 'pipe', 'ignore'], // Keep stdin and stdout open, close stderr
   });
